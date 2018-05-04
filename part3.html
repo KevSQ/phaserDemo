@@ -103,13 +103,15 @@
             });
             this.physics.add.overlap(player, stars, collectStar, null, this);
             this.physics.add.collider(stars, platforms);
-
            function collectStar (player, star)
            {
                star.disableBody(true, true);
 
                score += 10;
                scoreText.setText('Score: ' + score);
+               if (score === 120) {
+                scoreText.setText('You Win!');
+               }
            }
            scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
         }
